@@ -1,0 +1,310 @@
+
+.intro-text {
+    margin-top: 0;
+
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.filter-options {
+    padding-top: 24px
+}
+
+.option {
+
+    margin-bottom: 12px;
+}
+
+.category-list {
+    flex-wrap: wrap;
+    flex-direction: row !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.category {
+    padding: 4px 13px;
+
+    font-weight: 500;
+    font-size: 12px;
+    color: #ABABAB;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    border: 2px solid #F8F8F8;;
+    border-radius: 6px;
+}
+
+.item-category {
+    font-size: 10px;
+    color: #333333;
+
+    background-color: white;
+    user-select: none;
+}
+
+.category-option {
+    margin-right: 8px;
+    margin-bottom: 8px;
+
+    cursor: pointer;
+    transition: 0.2s linear color;
+}
+
+.category-option:hover {
+    color: #333333;
+}
+
+.category.selected {
+    color: #333333;
+
+    background-color: #F8F8F8;
+}
+
+.search-input {
+    width: 100%;
+}
+
+.submit {
+    margin-top: 10px;
+}
+
+/*----*/
+
+.results {
+    margin-top: 40px;
+}
+
+.joke-item {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+
+    background-color: #F8F8F8;
+}
+
+.joke-item:last-of-type {
+    margin-bottom: 0;
+}
+
+.result-item {
+    padding: 40px 40px 30px 100px;
+
+    border-radius: 20px;
+}
+
+.item-favourite {
+    padding: 20px 20px 20px 80px;
+
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.like-btn {
+    padding: 0;
+    align-self: flex-end;
+
+    border: 0;
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+.like-btn:focus {
+    outline: none;
+}
+
+.items-list {
+    padding-bottom: 30px;
+}
+
+.item-id {
+    margin-top: 7px;
+    margin-bottom: 5px;
+
+    font-weight: 500;
+    font-size: 10px;
+    color: #ABABAB;
+}
+
+.item-id a {
+    color: #8EA7FF;;
+}
+
+.link-icon {
+    margin-left: 5px;
+}
+
+.content {
+    margin-top: 0;
+    margin-bottom: 12px;
+
+    line-height: 1.5;
+}
+
+.result-item .content {
+    font-size: 18px;
+}
+
+.item-favourite .content {
+    margin-bottom: 17px;
+
+    font-size: 14px;
+}
+
+.item-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.last-update {
+    font-size: 10px;
+    color: #ABABAB;
+}
+
+.quote-icon {
+    position: absolute;
+
+    display: block;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+
+    background-color: white;
+    border-radius: 50%;
+}
+
+.item-favourite .quote-icon {
+    left: 20px;
+    top: 47px;
+
+    background-color: #F8F8F8;
+}
+
+.result-item .quote-icon {
+    left: 40px;
+    top: 65px;
+
+    background-color: white;
+}
+
+/* Favourites */
+
+.favourites {
+    width: 480px;
+    height: 100vh;
+    flex-basis: 480px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    overflow-y: auto;
+    padding: 20px 40px 0;
+
+    background-color: #F8F8F8;
+}
+
+.favourites-title {
+    font-size: 20px;
+    color: #ABABAB;
+    font-weight: 500;
+}
+
+.favourites-tip {
+    font-size: 14px;
+    color: #ABABAB;
+}
+
+.favourites-list {
+    margin-top: 22px;
+    padding-left: 0;
+    padding-bottom: 20px;
+}
+
+.favourites::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.favourites::-webkit-scrollbar {
+    width: 12px;
+}
+
+.favourites::-webkit-scrollbar-thumb {
+    border: 3px solid #F8F8F8;
+    border-radius: 7px;
+    background-color: #555;
+}
+
+.item-favourite .item-category {
+    display: none;
+}
+
+/*Media*/
+
+.site-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.cols-wrap {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    flex-grow: 1;
+}
+
+.main-col-wrap {
+    padding-top: 110px;
+    flex-grow: 1;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1339px) {
+    .favourites {
+        position: absolute;
+    }
+
+    .favourites-title {
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 833px) {
+    .favourites {
+        right: -100%;
+
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .main-col-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
+@media only screen and (min-width: 834px) and (max-width: 1339px) {
+    .favourites {
+        right: -480px;
+    }
+
+    .main-col-wrap {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .favourites {
+        max-height: 100vh;
+    }
+
+    .main-col-wrap {
+        padding-left: 140px;
+        padding-right: 140px;
+    }
+}
