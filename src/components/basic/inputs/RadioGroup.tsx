@@ -10,7 +10,7 @@ interface RadioGroupProps<T> {
 interface RadioItem<T> {
     label: string,
     value: T,
-    children?: JSX.Element | JSX.Element[]
+    children?: JSX.Element | (JSX.Element | undefined)[]
 }
 
 export const RadioGroup = <T extends {}>(props: RadioGroupProps<T>) => (
@@ -26,7 +26,6 @@ export const RadioGroup = <T extends {}>(props: RadioGroupProps<T>) => (
 interface OptionProps<T> extends RadioItem<T> {
     isChecked: boolean,
     onCheck: (_: T) => void,
-    children?: JSX.Element | JSX.Element[]
 }
 
 const RadioOption = <T extends {}>(props: OptionProps<T>) => (

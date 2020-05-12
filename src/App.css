@@ -15,23 +15,6 @@ body {
     background-color: white;
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 38px;
-
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-
-    background-color: #8EA7FF;;
-    background-image: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
-    border: 0;
-    border-radius: 10px;
-
-    cursor: pointer;
-    transition: 0.2s linear box-shadow;
-}
-
 .btn:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -52,6 +35,12 @@ body {
     width: 100%
 }
 
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 .site-container {
     display: flex;
     flex-direction: column;
@@ -59,24 +48,6 @@ body {
     width: 100%;
     flex-grow: 1;
     margin: 0 auto;
-
-    border: 1px solid black;
-    border-bottom: 0;
-    border-top: 0;
-}
-
-.main-header {
-    position: absolute;
-
-    padding: 40px 140px;
-}
-
-.logo {
-    font-size: 20px;
-    line-height: 1.4;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
 }
 
 .page-header {
@@ -153,17 +124,6 @@ label {
 
     background-color: #333333;
     border-radius: 50%;
-}
-
-input[type=text] {
-    height: 42px;
-    margin-top: 15px;
-    padding: 8px 14px;
-
-    font-size: 16px;
-
-    border: 2px solid #333;
-    border-radius: 10px;
 }
 
 input[type=text]:focus {

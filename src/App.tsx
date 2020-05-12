@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import './App.css';
-import { Header } from "./components/Header";
 import { Home } from "./components/Home";
 import { msiApp } from "./store/appReducers";
 
@@ -13,10 +12,7 @@ const App = () => {
     return (
         <Provider store={store}>
             <div className="site-container">
-                <Header/>
-                <main>
-                    <Home/>
-                </main>
+                <Home/>
             </div>
         </Provider>
     );
