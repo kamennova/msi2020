@@ -79,6 +79,9 @@ export const styles = {
         align-items: flex-start;
     }
     `,
+    middleRightWrap: css`
+    width: 100%;
+    `,
     lastUpdate: css`
     font-size: 10px;
     color: ${Colors.Grey};

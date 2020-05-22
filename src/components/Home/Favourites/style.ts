@@ -7,6 +7,8 @@ export const styles = {
          position: fixed;
          right: 0;
          top: 0;
+         display: flex;
+         flex-direction: column;
          width: 480px;
          max-width: 100%;
          height: 100vh;
@@ -32,6 +34,11 @@ export const styles = {
             border: 3px solid ${Colors.Lightgrey};
             border-radius: 7px;
             background-color: ${Colors.Darkgrey};
+         }
+         
+         ${MediaStr.mobile} {
+            padding-left: 20px;
+            padding-right: 20px;
          }
      
         ${MediaStr.mobileAndTablet} {
@@ -73,5 +80,10 @@ export const styles = {
         display: none;
     `,
     },
+    tip: css`
+    margin: auto;
+    padding-bottom: 100px;
+    text-align: center;
+    `
 };
 

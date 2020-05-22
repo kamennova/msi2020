@@ -30,9 +30,10 @@ export const JokeItem = (props: JokeItemProps) => {
 
             <div css={[styles.middleWrap]}>
                 <QuoteElem style={props.style?.quoteIcon}/>
-                <div>
+                <div css={styles.middleRightWrap}>
                     <ItemId url={props.url}/>
                     <p css={[styles.content, props.style?.content]}>{props.content}</p>
+
                     <div css={styles.bottomWrap}>
                         <span css={styles.lastUpdate}>Last update: {props.hoursSinceUpdate} hours ago</span>
                         {props.category !== undefined ?
