@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -9,123 +11,13 @@ body {
 
     font-family: Roboto, Arial, sans-serif;
     font-weight: 400;
+    color: #333333;
     font-style: normal;
     line-height: 1.4;
 
     background-color: white;
 }
 
-.btn:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.btn:focus {
-    outline: none;
-}
-
-.list {
-    display: flex;
-    flex-direction: column;
-    padding-left: 0;
-
-    list-style: none;
-}
-
 #root {
     width: 100%
-}
-
-fieldset {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
-.site-container {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    width: 100%;
-    flex-grow: 1;
-    margin: 0 auto;
-}
-
-.page-header {
-    padding-top: 10px;
-}
-
-.page-title {
-    margin-bottom: 6px;
-
-    font-weight: bold;
-    font-size: 32px;
-}
-
-.intro-text {
-    margin-top: 0;
-
-    font-weight: 500;
-    font-size: 24px;
-}
-
-/*--*/
-
-.option {
-
-    margin-bottom: 12px;
-}
-
-input[type=radio] {
-    visibility: hidden;
-    opacity: 0
-}
-
-label {
-    position: relative;
-
-    width: 100%;
-    padding-left: 16px;
-
-    font-size: 18px;
-    font-weight: 400;
-
-    cursor: pointer;
-}
-
-.radio-indicator {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid #ABABAB;
-}
-
-.radio-indicator.checked {
-    border-color: #333333;
-}
-
-.radio-indicator.checked::after {
-    content: '';
-
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-
-    width: 10px;
-    height: 10px;
-    margin: auto;
-
-    background-color: #333333;
-    border-radius: 50%;
-}
-
-input[type=text]:focus {
-    outline: none;
 }

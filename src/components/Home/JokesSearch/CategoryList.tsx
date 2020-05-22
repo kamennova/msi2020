@@ -1,4 +1,10 @@
 import React from 'react';
+import { List } from "../../basic/List";
+import { Category } from "../Category";
+import { styles } from "./style";
+
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 
 type Category = {
     name: string,
@@ -6,9 +12,13 @@ type Category = {
 };
 
 export const CategoryList = (props: { items: Category[], onSelect: (cat: string) => void, }) => (
-    <ul className='list category-list'>
-        {props.items.map((cat) => (
-            <li className={'category category-option ' + (cat.isSelected ? 'selected' : '')}
-                onClick={() => props.onSelect(cat.name)}>{cat.name}</li>))}
-    </ul>
+    <List style={styles.list}>
+        {props.items.map((category) => <CategoryOption {...category} onSelect={props.onSelect}/>)}
+    </List>
+);
+
+const CategoryOption = (props: { name: string, isSelected: boolean, onSelect: (name: string) => void }) => (
+    <li css={styles.categoryWrap} onClick={() => props.onSelect(props.name)}>
+        <Category style={props.isSelected ? styles.selected : undefined} name={props.name}/>
+    </li>
 );

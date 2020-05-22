@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { toggleIsFavourite } from "../../store/actions";
-import { StateShape } from "../../store/StoreState";
+import { SearchResults, StateShape } from "../../store/StoreState";
 import { thunkGetJokes, thunkSetCategories } from "../../store/thunks";
-import { media, sidePadding } from "../../Style";
+import { styles } from "./style";
 import { Filter, FilterOptions } from "../../types/Filters";
 import { Joke } from "../../types/Joke";
+import { OpacityLayer } from "../basic/Layer";
+import { SiteContainer } from "../basic/SiteContainer";
+import { MainTitle } from "../basic/titles/MainTitle";
 import { Header } from "../Header";
 import { Favourites } from "./Favourites";
-import { FavouritesToggle } from "./Favourites/FavouritesToggle";
+import { FavouritesToggle } from "./Favourites/Toggle";
 import { JokesResults } from "./JokesResults";
 import { JokesSearch } from "./JokesSearch";
-import './Jokes.css';
 
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 
 type HomeProps = {
-    getJokes: (filters: FilterOptions) => void,
+    getJokes: (filters: FilterOptions) => Promise<void>,
     setCategories: () => void,
     onToggleFav: (id: string) => void,
-    results: Joke[],
+    results: SearchResults,
     favourites: Joke[],
     categories: string[],
 };
@@ -41,24 +43,21 @@ const HomeComponent = (props: HomeProps) => {
     }, []);
 
     return (
-        <div className='site-container'>
-
+        <SiteContainer>
             <div css={styles.mainColWrap}>
                 <Header/>
-                <section className="main-col">
-                    <header className='page-header'>
-                        <h2 className="page-title">Hey!</h2>
-                        <p className="intro-text">Let's try to find a joke for you:</p>
-                    </header>
+                <div>
+                    <MainTitle>Hey!</MainTitle>
+                    <p css={styles.introText}>Let's try to find a joke for you:</p>
                     <JokesSearch categories={props.categories} onLoadNext={props.getJokes}/>
-                    <JokesResults onToggleFav={props.onToggleFav} jokes={props.results}/>
-                </section>
+                    <JokesResults onToggleFav={props.onToggleFav} results={props.results}/>
+                </div>
             </div>
 
-            <div css={styles.layer(isFavOpen)} onClick={toggleIsFavOpen} />
+            <OpacityLayer isVisible={isFavOpen} onClick={toggleIsFavOpen}/>
             <FavouritesToggle isOpen={isFavOpen} onToggle={onToggleFav}/>
             <Favourites isOpen={isFavOpen} jokes={props.favourites} onToggleFav={props.onToggleFav}/>
-        </div>
+        </SiteContainer>
     );
 };
 
@@ -75,37 +74,3 @@ const mapDispatchToProps = (dispatch: any) => ({
 });
 
 export const Home = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
-
-const styles = {
-    mainColWrap:
-        css`
-        flex-grow: 1; 
-        padding-left: ${sidePadding.desktop}px;
-        padding-right: ${sidePadding.desktop}px;
-           
-        @media (min-width: ${media.mobile}px) and (max-width: ${media.tablet - 1}px){
-             padding-left: ${sidePadding.mobile}px;
-             padding-right: ${sidePadding.mobile}px;
-        }
-           
-        @media (min-width: ${media.tablet}px) and (max-width: ${media.desktop - 1}px){
-           padding-left: ${sidePadding.tablet}px;
-           padding-right: ${sidePadding.tablet}px;
-        }
-        
-        @media (min-width: ${media.desktop}px) {
-            margin-right: 480px;
-        }
-   `,
-    layer: (isFavOpen: boolean) =>
-        css`
-        display: ${isFavOpen ? 'block' : 'none'};
-        position: absolute;
-        left: 0;
-        top: 0;
-        background-color: ${isFavOpen? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0)'};
-        width: 100%;
-        height: 100%;
-        transition: 0.2s linear background-color;
-        `
-};
