@@ -1,20 +1,21 @@
 import React from 'react';
+import { Colors } from "../../../Style";
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
-import { Colors } from "../../../Style";
 
 type InputProps = {
     name: string,
     placeholder?: string,
     value?: string,
     onChange?: (evt: any) => void,
+    autoFocus?: boolean,
 };
 
 export const TextInput = (props: InputProps) => (
     <input css={style}
            type="text" value={props.value} name={props.name} onChange={props.onChange}
-           placeholder={props.placeholder}/>
+           placeholder={props.placeholder} autoFocus={props.autoFocus}/>
 );
 
 const style = css`

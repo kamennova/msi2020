@@ -1,7 +1,7 @@
 import React from "react";
-import { Joke } from "../../../types/Joke";
-import { List } from "../../basic/List";
-import { Tip } from "../../basic/Tip";
+import { Joke } from "../../types";
+import { List } from "../basic/List";
+import { Tip } from "../basic/Tip";
 import { JokeItem } from "../JokeItem";
 import { styles } from "./style";
 

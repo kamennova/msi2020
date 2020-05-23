@@ -1,5 +1,5 @@
 import { css } from '@emotion/core'
-import { Colors } from "../../../Style";
+import { Colors } from "../../Style";
 
 export const styles = {
     list: css`

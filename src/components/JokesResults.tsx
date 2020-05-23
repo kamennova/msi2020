@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { setPage } from "../../store/actions";
-import { Pagination } from "../../store/StoreState";
-import { Joke } from "../../types/Joke";
-import { List } from "../basic/List";
-import { Tip } from "../basic/Tip";
-import { Pagination as PaginationComponent } from '../basic/pagination';
+import { setPage } from "../store/actions";
+import { Joke, Pagination } from "../types";
+import { List } from "./basic/List";
+import { Pagination as PaginationComponent } from './basic/pagination';
+import { Tip } from "./basic/Tip";
 import { JokeItem } from "./JokeItem";
 
 /** @jsx jsx */

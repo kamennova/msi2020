@@ -1,5 +1,5 @@
 import React from 'react';
-import { List } from "../../basic/List";
+import { List } from "../basic/List";
 import { Category } from "../Category";
 import { styles } from "./style";
 

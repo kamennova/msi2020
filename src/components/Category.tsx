@@ -2,7 +2,7 @@ import React from 'react';
 
 /** @jsx jsx */
 import { jsx, css, SerializedStyles } from '@emotion/core'
-import { Colors } from "../../Style";
+import { Colors } from "../Style";
 
 export const Category = (props: { name: string, style?: SerializedStyles | (SerializedStyles | undefined)[] }) => (
     <p css={[style, props.style]}>

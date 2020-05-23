@@ -1,12 +1,7 @@
 import { Joke } from "../types/Joke";
+import { Pagination } from "../types/Pagination";
 
 const DefaultItemsPerPage = 50;
-
-export type Pagination = {
-    currentIndex: number,
-    totalCount: number,
-    itemsPerPage: number,
-};
 
 export type StateShape = {
     jokes: Joke[],

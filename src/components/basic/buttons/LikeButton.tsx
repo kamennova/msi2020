@@ -5,7 +5,7 @@ import { jsx, css } from '@emotion/core'
 
 export const LikeButton = (props: {isFavourite: boolean, toggleIsFavourite: () => void}) => (
     <button css={style} onClick={props.toggleIsFavourite}>
-        <HeartIcon fill={props.isFavourite} />
+        <HeartIcon isFilled={props.isFavourite} />
     </button>
 );
 

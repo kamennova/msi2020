@@ -1,9 +1,7 @@
-import { Dispatch } from "redux";
-import { Action, ActionCreator } from "redux";
+import { Action, ActionCreator, Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { getByCategory, getByFreeSearch, getCategories, getRandom } from "../API";
-import { Filter, FilterOptions } from "../types/Filters";
-import { Joke } from "../types/Joke";
+import { Filter, FilterOptions, Joke } from "../types";
 import { setCategories, setJokes } from "./actions";
 import { StateShape } from "./StoreState";
 

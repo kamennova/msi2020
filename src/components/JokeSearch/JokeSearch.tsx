@@ -1,35 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { Filter, FilterOptions, getOptions } from "../../../types/Filters";
-import { Button } from "../../basic/buttons";
-import { SpinnerIcon } from "../../basic/icons/Spinner";
-import { RadioGroup } from "../../basic/inputs/Radio";
-import { TextInput } from "../../basic/inputs/TextInput";
-import { Tip } from "../../basic/Tip";
+import { Filter, FilterOptions, getOptions } from "../../types";
+import { Button } from "../basic/buttons";
+import { SpinnerIcon } from "../basic/icons";
+import { RadioGroup } from "../basic/inputs/Radio";
+import { TextInput } from "../basic/inputs/TextInput";
+import { Tip } from "../basic/Tip";
 import { styles } from "./style";
 import { CategoryList } from "./CategoryList";
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 
-const DefaultCategory = 'celebrity';
-
 const MaxDelayMs = 120;
 
-export const JokesSearch = (props: { categories: string[], onLoadNext: (filter: FilterOptions) => Promise<void> }) => {
-    const initCategory = props.categories.length > 0 ? props.categories[0] : DefaultCategory;
+type FiltersProps = {
+    categories: string[],
+    onLoadNext: (filter: FilterOptions) => Promise<void>,
+    query: string,
+    category: string,
+    activeFilter: Filter,
+    setQuery: (q: string) => void,
+    setCategory: (c: string) => void,
+    setActiveFilter: (f: Filter) => void,
+}
 
+export const JokeSearch = (props: FiltersProps) => {
     const [isFetching, setIsFetching] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
-    const [activeFilter, setActiveFilter] = useState<Filter>(Filter.Random);
-    const [category, setCategory] = useState<string>(initCategory);
-    const [query, setQuery] = useState<string>('');
     const [showQueryTip, setShowQueryTip] = useState(false);
 
     const onSubmit = async () => {
-        if (activeFilter === Filter.Search && query.length < 3) {
+        if (props.activeFilter === Filter.Search && props.query.length < 3) {
             setShowQueryTip(true);
         } else {
-            if (showQueryTip && query.length >= 3) {
+            if (showQueryTip && props.query.length >= 3) {
                 setShowQueryTip(false);
             }
 
@@ -45,9 +49,10 @@ export const JokesSearch = (props: { categories: string[], onLoadNext: (filter: 
 
     useEffect(() => {
         if (isFetching) {
+            // only show spinner when load time exceeds max delay
             const timer = setTimeout(showSpinnerIfNotLoaded, MaxDelayMs);
 
-            props.onLoadNext(getOptions(activeFilter, category, query)).then(() => {
+            props.onLoadNext(getOptions(props.activeFilter, props.category, props.query)).then(() => {
                 clearTimeout(timer);
                 setShowSpinner(false);
                 setIsFetching(false);
@@ -55,9 +60,9 @@ export const JokesSearch = (props: { categories: string[], onLoadNext: (filter: 
         }
     }, [isFetching]);
 
-    const updateQuery = (evt: { target: { value: string } }) => setQuery(evt.target.value);
+    const updateQuery = (evt: { target: { value: string } }) => props.setQuery(evt.target.value);
 
-    const items = props.categories.map(cat => ({ name: cat, isSelected: category === cat }));
+    const items = props.categories.map(cat => ({ name: cat, isSelected: props.category === cat }));
 
     const filters = [
         {
@@ -67,14 +72,15 @@ export const JokesSearch = (props: { categories: string[], onLoadNext: (filter: 
         {
             label: 'From categories',
             value: Filter.Categories,
-            children: <CategoryList items={items} onSelect={setCategory}/>,
+            children: <CategoryList items={items} onSelect={props.setCategory}/>,
         },
         {
             label: 'Search',
             value: Filter.Search,
             children: [
                 <br/>,
-                <TextInput name={'Search'} value={query} onChange={updateQuery} placeholder="Free text search..." autoFocus={true}/>,
+                <TextInput name={'Search'} value={props.query} onChange={updateQuery}
+                           placeholder="Free text search..." autoFocus={true}/>,
                 showQueryTip ? <Tip>Enter at least 3 characters</Tip> : undefined
             ],
         },
@@ -82,7 +88,8 @@ export const JokesSearch = (props: { categories: string[], onLoadNext: (filter: 
 
     return (
         <section css={styles.filtersWrap}>
-            <RadioGroup name='filter-options' items={filters} onCheck={setActiveFilter} activeItem={activeFilter}/>
+            <RadioGroup name='filter-options' items={filters} onCheck={props.setActiveFilter}
+                        activeItem={props.activeFilter}/>
             <Button style={styles.submitBtn}
                     icon={showSpinner ? <SpinnerIcon/> : undefined}
                     onClick={onSubmit}

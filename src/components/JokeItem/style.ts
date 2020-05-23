@@ -1,5 +1,5 @@
 import { css } from '@emotion/core'
-import { Colors, MediaStr } from "../../../Style";
+import { Colors, MediaStr } from "../../Style";
 
 export const styles = {
     category: css`

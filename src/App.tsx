@@ -7,9 +7,7 @@ import store from "./store/store";
 const App = () => {
     return (
         <Provider store={store}>
-            <div className="site-container">
-                <Home/>
-            </div>
+            <Home/>
         </Provider>
     );
 };
