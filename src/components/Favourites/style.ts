@@ -1,6 +1,8 @@
 import { css } from '@emotion/core'
 import { Colors, MediaStr } from "../../Style";
 
+export const TransitionTime = 0.2;
+
 export const styles = {
     favourites: (isOpen: boolean) =>
         css`
@@ -11,16 +13,14 @@ export const styles = {
          flex-direction: column;
          width: 480px;
          max-width: 100%;
-         height: 100vh;
-         max-height: 100vh;
-         min-height: 100vh;
+         height: ${window.innerHeight}px;
          flex-basis: 480px;
          flex-shrink: 0;
          flex-grow: 0;
          overflow-y: auto;
          padding: 20px 40px 0;
          background-color: ${Colors.Lightgrey};
-         transition: 0.2s linear right;
+         transition: ${TransitionTime}s linear right;
          
          &::-webkit-scrollbar-track {
             background-color: transparent;

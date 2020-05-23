@@ -1,9 +1,10 @@
 import { css } from '@emotion/core'
 import { Colors, MediaStr } from "../../../Style";
+import { TransitionTime } from "../style";
 
 export const styles = {
     button:
-        css`
+        (isOpen: boolean) => css`
         position: absolute;
         top: 40px;
         right: 40px;
@@ -12,12 +13,19 @@ export const styles = {
         background: none;
         outline: none;
         border: 0;
+        padding: 4px;
+        padding-right: 10px;
         box-shadow: none;
         cursor: pointer;
         z-Index: 200;
         color: ${Colors.Grey};
         font-weight: 500;
         font-size: 20px;
+        background-color: ${isOpen? Colors.Lightgrey  : 'transparent'};
+        border-radius: 16px;
+        
+        transition: 0s linear background-color;
+        transition-delay: ${TransitionTime}s;
 
         ${MediaStr.mobile} {
           top: 20px;

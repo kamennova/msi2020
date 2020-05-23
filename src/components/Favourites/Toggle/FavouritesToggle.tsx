@@ -10,7 +10,7 @@ type ToggleProps = {
 };
 
 export const FavouritesToggle = (props: ToggleProps) => (
-    <button onClick={props.onToggle} css={styles.button}>
+    <button onClick={props.onToggle} css={styles.button(props.isOpen)}>
         <ToggleIndicator isOpen={props.isOpen}/>
         Favourite
     </button>
