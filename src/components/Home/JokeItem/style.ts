@@ -64,6 +64,9 @@ export const styles = {
     content: css`
     margin-top: 0;
     margin-bottom: 12px;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
 
     font-size: 18px;
     line-height: 1.5;
