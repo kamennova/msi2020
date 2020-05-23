@@ -9,9 +9,9 @@ import { StateShape } from "./StoreState";
 
 export type ThunkResult = ActionCreator<ThunkAction<Promise<Action>, StateShape, void, Action<void>>>;
 
-export const thunkSetCategories: ThunkResult = () => async (dispatch: Dispatch) => {
-    return await getCategories().then((categories) => dispatch(setCategories(categories)));
-};
+export const thunkSetCategories: ThunkResult = () => async (dispatch: Dispatch) =>
+    await getCategories()
+        .then((categories) => dispatch(setCategories(categories)));
 
 export const thunkGetJokes: ThunkResult = (filter: FilterOptions) => async (dispatch: Dispatch, getState: () => StateShape) => {
     const jokes = await getJokes(filter);

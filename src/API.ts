@@ -16,13 +16,16 @@ export const fetchAPI = async (href: string) => await fetch(ApiUrl + href, { met
 
 export const getCategories = async (): Promise<string[]> => await fetchAPI('categories');
 
-export const getByFreeSearch = async (query: string) => await
-    fetchAPI(`search?query=${query}`).then(({ result }) => result.map((item: ApiJoke) => toJoke(item)));
+export const getByFreeSearch = async (query: string): Promise<Joke[]> =>
+    await fetchAPI(`search?query=${query}`)
+        .then((res) => res.result.map((item: ApiJoke) => toJoke(item)));
 
 export const getByCategory = async (category: string): Promise<Joke> =>
-    toJoke(await fetchAPI(`random?category=${category}`));
+    await fetchAPI(`random?category=${category}`)
+        .then(res => toJoke(res));
 
-export const getRandom = async (): Promise<Joke> => toJoke(await fetchAPI('random'));
+export const getRandom = async (): Promise<Joke> => await fetchAPI('random')
+    .then(res => toJoke(res));
 
 const toJoke = (joke: ApiJoke): Joke => ({
     category: joke.categories[0],

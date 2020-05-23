@@ -3,53 +3,69 @@ import { List } from "../List";
 import { styles } from './style';
 
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 
 const DefaultMaxPagesDisplayed = 7;
 
 type PaginationProps = {
-    pagesCount: number,
+    totalCount: number,
     currentIndex: number,
-    onSelect: (index: number) => void,
+    onGoToPage: (index: number) => void,
     maxPagesDisplayed?: number,
 }
 
 export const Pagination = (props: PaginationProps) => {
     const maxPages = props.maxPagesDisplayed !== undefined ? props.maxPagesDisplayed : DefaultMaxPagesDisplayed;
-    const indexes = getIndexes(props.pagesCount, props.currentIndex, maxPages);
+    const indexes = getIndexes(props.totalCount, props.currentIndex, maxPages);
+
+    const onPrev = props.currentIndex > 0 ? () => props.onGoToPage(props.currentIndex - 1) : undefined;
+    const onNext = props.currentIndex < props.totalCount - 1 ? () => props.onGoToPage(props.currentIndex + 1) : undefined;
 
     return (
         <div>
-            <DirectionBtn onClick={() => props}>Prev</DirectionBtn>
-            <List style={css`flex-direction: row; display: flex`}>
-                {indexes.map(index => <PageLink index={index + 1} isCurrent={index === props.currentIndex}
-                                                onClick={() => {
-                                                }}/>)}
+            <List style={styles.list}>
+                <PageLink isDisabled={props.currentIndex === 0} onClick={onPrev}>Prev</PageLink>
+                {indexes.map(index => (
+                    <PageLink isDisabled={index === props.currentIndex} onClick={() => props.onGoToPage(index)}>
+                        {index + 1}
+                    </PageLink>
+                ))}
+                <PageLink isDisabled={props.currentIndex === props.totalCount - 1} onClick={onNext}>Next</PageLink>
             </List>
-            <DirectionBtn onClick={() => {
-            }}>Next</DirectionBtn>
         </div>
     );
 };
 
-const getIndexes = (pagesCount: number, currentIndex: number, maxPages: number) => {
-    // if(pagesCount > MaxPagesFromSideDisplay)
-    const indexes = [];
-    const start = Math.max(currentIndex - Math.floor(maxPages / 2), 0);
-    console.log(start);
+const PageLink = (props: { children: string | number, isDisabled: boolean, onClick?: () => void }) => (
+    <li css={styles.linkWrap}>
+        <button css={styles.link(props.isDisabled)} onClick={props.onClick}>
+            {props.children}
+        </button>
+    </li>
+);
 
-    for (let i = 0; i < maxPages; i++) {
+
+const getIndexes = (pagesCount: number, currentIndex: number, maxPages: number) => {
+    const indexes = [];
+
+    const start = getStartPageIndex(currentIndex, pagesCount, maxPages);
+    const indexesNum = Math.min(pagesCount, maxPages);
+
+    for (let i = 0; i < indexesNum; i++) {
         indexes.push(start + i);
     }
 
     return indexes;
 };
 
-const PageLink = (props: { index: number, isCurrent: boolean, onClick: () => void }) => (
-    <button css={styles.link(props.isCurrent)} onClick={props.onClick}>{props.index}</button>
-);
+const getStartPageIndex = (currentIndex: number, pagesCount: number, maxPages: number) => {
+    const halfIndexes = Math.floor(maxPages / 2);
 
-const DirectionBtn = (props: { children: string, onClick: () => void }) => (
-    <button onClick={props.onClick} css={styles.directionBtn}>{props.children}</button>
-);
-
+    if (currentIndex < halfIndexes) {
+        return 0;
+    } else if (currentIndex + halfIndexes >= pagesCount) {
+        return pagesCount - maxPages;
+    } else {
+        return currentIndex - halfIndexes;
+    }
+};

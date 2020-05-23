@@ -1,27 +1,27 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/core'
-
-const base = (isActive?: boolean) => css`
-    outline: none;
-    background-color: ${isActive ? '#F8F8f8' : 'white'};
-    border: ${isActive ? 'none' : '2px solid #F8F8F8'};
-    cursor: ${isActive ? 'default' : 'pointer'};
-    border-radius: 4px;
-    margin-right: 10px;
-    `;
+import { css } from '@emotion/core'
 
 export const styles = {
-    link: (isCurrent: boolean) =>
-        css`
-    ${{ ...base(isCurrent) }}
+    list: css`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    `,
+    linkWrap: css`
+    margin-right: 10px;
+    margin-bottom: 12px;
+    &:last-of-type {
+        margin-right: 0;
+    }
+    `,
+    link: (isDisabled: boolean) => css`
+    outline: none;
+    background-color: ${isDisabled ? '#F8F8f8' : 'white'};
+    border: 2px solid #F8F8F8;
+    cursor: ${isDisabled ? 'default' : 'pointer'};
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 1;
     min-width: 37px;
-    padding: 12px 10px;
+    padding: 12px 15px;
     `,
-    directionBtn: css`
-        ${{ ...base(false) }}
-        padding: 12px 15px;
-    
-    `,
-    prevBtn: css`
-    `
 };

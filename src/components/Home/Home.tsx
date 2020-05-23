@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { toggleIsFavourite } from "../../store/actions";
-import { SearchResults, StateShape } from "../../store/StoreState";
+import { Pagination, StateShape } from "../../store/StoreState";
 import { thunkGetJokes, thunkSetCategories } from "../../store/thunks";
 import { styles } from "./style";
 import { Filter, FilterOptions } from "../../types/Filters";
@@ -22,7 +22,8 @@ type HomeProps = {
     getJokes: (filters: FilterOptions) => Promise<void>,
     setCategories: () => void,
     onToggleFav: (id: string) => void,
-    results: SearchResults,
+    results: Joke[],
+    pagination: Pagination,
     favourites: Joke[],
     categories: string[],
 };
@@ -50,7 +51,7 @@ const HomeComponent = (props: HomeProps) => {
                     <MainTitle>Hey!</MainTitle>
                     <p css={styles.introText}>Let's try to find a joke for you:</p>
                     <JokesSearch categories={props.categories} onLoadNext={props.getJokes}/>
-                    <JokesResults onToggleFav={props.onToggleFav} results={props.results}/>
+                    <JokesResults onToggleFav={props.onToggleFav} jokes={props.results} pagination={props.pagination}/>
                 </div>
             </div>
 
@@ -62,7 +63,8 @@ const HomeComponent = (props: HomeProps) => {
 };
 
 const mapStateToProps = (state: StateShape) => ({
-    results: state.results,
+    results: state.jokes,
+    pagination: state.pagination,
     favourites: state.favourites,
     categories: state.categories,
 });

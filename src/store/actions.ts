@@ -2,7 +2,8 @@ import { Joke } from "../types/Joke";
 
 export const TOGGLE_FAVOURITE = 'Toggle fav',
     SET_CATEGORIES = 'Set categories',
-    SET_JOKES = 'Set jokes';
+    SET_JOKES = 'Set jokes',
+    SET_PAGE = 'Set_page';
 
 export type SetCategoriesAction = {
     type: typeof SET_CATEGORIES,
@@ -14,6 +15,11 @@ export type SetJokesAction = {
     jokes: Joke[],
 };
 
+export type SetPageAction = {
+    type: typeof SET_PAGE,
+    index: number,
+};
+
 export type ToggleFavouriteAction = {
     type: typeof TOGGLE_FAVOURITE,
     id: string,
@@ -21,6 +27,7 @@ export type ToggleFavouriteAction = {
 
 export const setCategories = (categories: string[]): SetCategoriesAction => ({ type: SET_CATEGORIES, categories }),
     setJokes = (jokes: Joke[]): SetJokesAction => ({ type: SET_JOKES, jokes }),
-    toggleIsFavourite = (id: string): ToggleFavouriteAction => ({ type: TOGGLE_FAVOURITE, id });
+    toggleIsFavourite = (id: string): ToggleFavouriteAction => ({ type: TOGGLE_FAVOURITE, id }),
+    setPage = (index: number): SetPageAction => ({ type: SET_PAGE, index });
 
-export type JokeAction = ToggleFavouriteAction | SetCategoriesAction | SetJokesAction;
+export type JokeAction = ToggleFavouriteAction | SetCategoriesAction | SetJokesAction | SetPageAction;

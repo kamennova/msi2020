@@ -13,7 +13,7 @@ import { jsx, css } from '@emotion/core'
 
 const DefaultCategory = 'celebrity';
 
-const maxDelayMs = 120;
+const MaxDelayMs = 120;
 
 export const JokesSearch = (props: { categories: string[], onLoadNext: (filter: FilterOptions) => Promise<void> }) => {
     const initCategory = props.categories.length > 0 ? props.categories[0] : DefaultCategory;
@@ -45,7 +45,7 @@ export const JokesSearch = (props: { categories: string[], onLoadNext: (filter: 
 
     useEffect(() => {
         if (isFetching) {
-            const timer = setTimeout(showSpinnerIfNotLoaded, maxDelayMs);
+            const timer = setTimeout(showSpinnerIfNotLoaded, MaxDelayMs);
 
             props.onLoadNext(getOptions(activeFilter, category, query)).then(() => {
                 clearTimeout(timer);
@@ -74,7 +74,7 @@ export const JokesSearch = (props: { categories: string[], onLoadNext: (filter: 
             value: Filter.Search,
             children: [
                 <br/>,
-                <TextInput name={'Search'} value={query} onChange={updateQuery} placeholder="Free text search..."/>,
+                <TextInput name={'Search'} value={query} onChange={updateQuery} placeholder="Free text search..." autoFocus={true}/>,
                 showQueryTip ? <Tip>Enter at least 3 characters</Tip> : undefined
             ],
         },
