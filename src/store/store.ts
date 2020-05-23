@@ -1,37 +1,40 @@
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import { msiApp } from "./appReducers";
-import { StateShape } from "./StoreState";
+import { initialState } from "./StoreState";
 
 const LocalStorageKey = 'ChuckNorrisJokesState';
 
 const loadState = () => {
     try {
         const serializedState = localStorage.getItem(LocalStorageKey);
+
         if (serializedState === null) {
             return undefined;
         }
+
         return JSON.parse(serializedState);
     } catch (err) {
+        console.log('Could not load local storage state', err);
+
         return undefined;
     }
 };
 
-const saveState = (state: StateShape) => {
+const saveState = (state: { [key: string]: any }) => {
     try {
         const serializedState = JSON.stringify(state);
         localStorage.setItem(LocalStorageKey, serializedState);
-    } catch {
-        // ignore write errors
+    } catch (err) {
+        console.log('Could not save state', err);
     }
 };
 
-const persistedState = loadState();
-const store = createStore(msiApp, persistedState, applyMiddleware(thunk));
+const store = createStore(msiApp, { ...initialState, ...loadState() }, applyMiddleware(thunk));
 
 store.subscribe(() => {
     saveState({
-        ...store.getState(),
+        favourites: store.getState().favourites,
     });
 });
 
