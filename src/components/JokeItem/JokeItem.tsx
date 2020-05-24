@@ -1,14 +1,12 @@
 import React from "react";
-import { Joke } from "../../types/Joke";
+import { Joke } from "../../types";
 import { LikeButton } from "../basic/buttons/LikeButton";
-import { LinkIcon } from "../basic/icons/Link";
-import { QuoteIcon } from "../basic/icons/Quote";
+import { LinkIcon, QuoteIcon } from "../basic/icons";
 import { Category } from "../Category";
 import { styles } from './style';
-import { SerializedStyles } from '@emotion/core'
 
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx, SerializedStyles } from '@emotion/core'
 
 type JokeItemProps = Joke & {
     onToggleFav: (id: string) => void,
@@ -31,7 +29,7 @@ export const JokeItem = (props: JokeItemProps) => {
             <div css={[styles.middleWrap]}>
                 <QuoteElem style={props.style?.quoteIcon}/>
                 <div css={styles.middleRightWrap}>
-                    <ItemId url={props.url}/>
+                    <ItemId id={props.id} url={props.url}/>
                     <p css={[styles.content, props.style?.content]}>{props.content}</p>
 
                     <div css={styles.bottomWrap}>
@@ -51,9 +49,9 @@ const QuoteElem = (props: { style?: SerializedStyles }) => (
     </span>
 );
 
-const ItemId = (props: { url: string }) => (
+const ItemId = (props: { id: string, url: string }) => (
     <p css={styles.itemId}>
-        <span>ID: </span><a target='_blank' href={props.url}>{props.url}</a><LinkIcon/>
+        <span>ID: </span><a target='_blank' href={props.url}>{props.id}</a><LinkIcon/>
     </p>
 );
 

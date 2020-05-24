@@ -14,7 +14,7 @@ export const styles = {
     `,
     middleWrap: css`
     display: flex;
-    
+    margin-top: 8px;    
     `,
     item: css`
     position: relative;
@@ -48,7 +48,7 @@ export const styles = {
     border-radius: 50%;
     `,
     itemId: css`
-    margin-top: 10px;
+    margin-top: 0;
     margin-bottom: 5px;
 
     font-weight: 500;
@@ -69,7 +69,7 @@ export const styles = {
     white-space: pre-wrap;
 
     font-size: 18px;
-    line-height: 1.5;
+    line-height: 1.45;
     `,
     bottomWrap: css`
     display: flex;

@@ -1,20 +1,20 @@
 import { css } from '@emotion/core'
-import { MediaStr, sidePadding } from "../../Style";
+import { MediaStr, SidePadding } from "../../Style";
 
 export const styles = {
     mainColWrap: css`
         flex-grow: 1; 
-        padding-left: ${sidePadding.desktop}px;
-        padding-right: ${sidePadding.desktop}px;
+        padding-left: ${SidePadding.desktop}px;
+        padding-right: ${SidePadding.desktop}px;
            
         ${MediaStr.mobile} {
-             padding-left: ${sidePadding.mobile}px;
-             padding-right: ${sidePadding.mobile}px;
+             padding-left: ${SidePadding.mobile}px;
+             padding-right: ${SidePadding.mobile}px;
         }
            
         ${MediaStr.tablet} {
-           padding-left: ${sidePadding.tablet}px;
-           padding-right: ${sidePadding.tablet}px;
+           padding-left: ${SidePadding.tablet}px;
+           padding-right: ${SidePadding.tablet}px;
         }
         
         ${MediaStr.desktop} {

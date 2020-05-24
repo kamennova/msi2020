@@ -15,6 +15,7 @@ export const styles = {
     `,
     link: (isDisabled: boolean) => css`
     outline: none;
+    user-select: none;
     background-color: ${isDisabled ? '#F8F8f8' : 'white'};
     border: 2px solid #F8F8F8;
     cursor: ${isDisabled ? 'default' : 'pointer'};

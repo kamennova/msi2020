@@ -1,7 +1,7 @@
 export const media = {
     mobile: 320,
-    tablet: 481,
-    desktop: 1441,
+    tablet: 480,
+    desktop: 1440,
 };
 
 export const MediaStr = {
@@ -11,7 +11,7 @@ export const MediaStr = {
     desktop: `@media screen and (min-width: ${media.desktop}px)`,
 };
 
-export const sidePadding = {
+export const SidePadding = {
     mobile: 20,
     tablet: 40,
     desktop: 140,

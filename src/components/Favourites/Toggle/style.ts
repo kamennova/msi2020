@@ -1,35 +1,38 @@
 import { css } from '@emotion/core'
-import { Colors, MediaStr } from "../../../Style";
+import { Colors, MediaStr, SidePadding } from "../../../Style";
 import { TransitionTime } from "../style";
+
+const Padding = 4,
+    PaddingRight = 10;
 
 export const styles = {
     button:
         (isOpen: boolean) => css`
         position: absolute;
-        top: 40px;
-        right: 40px;
+        top: ${SidePadding.tablet - Padding}px;
+        right: ${SidePadding.tablet - PaddingRight}px;
         display: flex;
         align-items: center;
         background: none;
         outline: none;
         border: 0;
-        padding: 4px;
-        padding-right: 10px;
+        padding: ${Padding}px;
+        padding-right: ${PaddingRight}px;
         box-shadow: none;
         cursor: pointer;
         z-Index: 200;
         color: ${Colors.Grey};
         font-weight: 500;
         font-size: 20px;
-        background-color: ${isOpen? Colors.Lightgrey  : 'transparent'};
+        background-color: ${isOpen ? Colors.Lightgrey : 'transparent'};
         border-radius: 16px;
         
         transition: 0s linear background-color;
         transition-delay: ${TransitionTime}s;
 
         ${MediaStr.mobile} {
-          top: 20px;
-          right: 20px;
+          top: ${SidePadding.mobile - Padding}px;
+          right: ${SidePadding.mobile - PaddingRight}px;
         }
 
         ${MediaStr.desktop} {

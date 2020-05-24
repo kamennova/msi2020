@@ -57,7 +57,6 @@ export const styles = {
          }
         `,
     list: css`
-         margin-top: 22px;
          padding-bottom: 20px;
          flex-direction: column;
          `,
