@@ -24,10 +24,12 @@ const _JokesResults = (props: ResultsProps) => {
         <section css={styles.wrap}>
             {props.jokes.length === 0 ? <Tip>Nothing found by your query :/</Tip> : undefined}
 
-            <List style={styles.list}>
+            <List>
                 {props.jokes.map(item => <JokeItem {...item} onToggleFav={props.onToggleFav}/>)}
             </List>
-            {showPagination ? <PaginationComponent {...props.pagination} onGoToPage={props.onGetPage}/> : undefined}
+            {showPagination ?
+                <PaginationComponent style={styles.pagination} {...props.pagination}
+                                     onGoToPage={props.onGetPage}/> : undefined}
         </section>
     );
 };
@@ -43,7 +45,7 @@ const styles = {
     margin-top: 40px;
     padding-bottom: 40px;
     `,
-    list: css`
-    padding-bottom: 30px;
+    pagination: css`
+    margin-top: 30px;
     `,
 };

@@ -3,7 +3,7 @@ import { List } from "../List";
 import { styles } from './style';
 
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx, SerializedStyles } from '@emotion/core'
 
 const DefaultMaxPagesDisplayed = 7;
 
@@ -12,6 +12,7 @@ type PaginationProps = {
     currentIndex: number,
     onGoToPage: (index: number) => void,
     maxPagesDisplayed?: number,
+    style?: SerializedStyles,
 }
 
 export const Pagination = (props: PaginationProps) => {
@@ -22,7 +23,7 @@ export const Pagination = (props: PaginationProps) => {
     const onNext = props.currentIndex < props.totalCount - 1 ? () => props.onGoToPage(props.currentIndex + 1) : undefined;
 
     return (
-        <div>
+        <div css={props.style}>
             <List style={styles.list}>
                 <PageLink isDisabled={props.currentIndex === 0} onClick={onPrev}>Prev</PageLink>
                 {indexes.map(index => (
@@ -60,11 +61,12 @@ const getIndexes = (pagesCount: number, currentIndex: number, maxPages: number) 
 
 const getStartPageIndex = (currentIndex: number, pagesCount: number, maxPages: number) => {
     const halfIndexes = Math.floor(maxPages / 2);
+    const indexesNum = Math.min(pagesCount, maxPages);
 
     if (currentIndex < halfIndexes) {
         return 0;
     } else if (currentIndex + halfIndexes >= pagesCount) {
-        return pagesCount - maxPages;
+        return pagesCount - indexesNum;
     } else {
         return currentIndex - halfIndexes;
     }
