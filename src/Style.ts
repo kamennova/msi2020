@@ -3,7 +3,7 @@ import { css } from '@emotion/core'
 export const media = {
     mobile: 320,
     tablet: 480,
-    desktop: 1440,
+    desktop: 1280,
 };
 
 export const MediaStr = {

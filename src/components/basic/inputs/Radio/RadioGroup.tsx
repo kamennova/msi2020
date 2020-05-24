@@ -5,7 +5,7 @@ import { RadioItem } from "./RadioItem";
 import { styles } from "./style";
 
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 
 interface RadioGroupProps<T> {
     items: Array<RadioItem<T>>,

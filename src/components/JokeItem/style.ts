@@ -14,7 +14,7 @@ export const styles = {
     `,
     middleWrap: css`
     display: flex;
-    margin-top: 8px;    
+    margin-top: 5px;    
     `,
     item: css`
     position: relative;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Joke } from "../../types";
+import { HeartIcon } from "../basic/icons";
 import { List } from "../basic/List";
 import { Tip } from "../basic/Tip";
 import { JokeItem } from "../JokeItem";
@@ -24,7 +25,11 @@ export const Favourites = (props: FavProps) => (
     </section>
 );
 
-const FavouritesTip = () => <Tip style={styles.tip}>Jokes you ❤️ will appear here</Tip>
+const FavouritesTip = () => (
+    <Tip style={styles.tip}>Jokes you
+        <span css={styles.heartWrap}><HeartIcon isFilled={true} size={15}/>️</span>
+        will appear here</Tip>
+);
 
 const FavouriteJoke = (props: { joke: Joke, onToggleFav: (_: string) => void }) => (
     <JokeItem {...props.joke} onToggleFav={props.onToggleFav} style={styles.joke}/>

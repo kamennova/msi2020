@@ -1,10 +1,10 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 
 /** @jsx jsx */
-import { jsx, css, keyframes } from '@emotion/core'
+import { jsx, css, keyframes, SerializedStyles } from '@emotion/core'
 
-export const SpinnerIcon = (props: {style?: CSSProperties}) => (
-    <span css={styles} />
+export const SpinnerIcon = (props: { style?: SerializedStyles }) => (
+    <span css={[styles, props.style]}/>
 );
 
 const spin = keyframes`

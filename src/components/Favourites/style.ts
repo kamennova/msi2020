@@ -3,6 +3,8 @@ import { Colors, MediaStr } from "../../Style";
 
 export const TransitionTime = 0.2;
 
+const SidebarWidth = 480;
+
 export const styles = {
     favourites: (isOpen: boolean) =>
         css`
@@ -11,10 +13,10 @@ export const styles = {
          top: 0;
          display: flex;
          flex-direction: column;
-         width: 480px;
+         width: ${SidebarWidth}px;
          max-width: 100%;
          height: 100%;
-         flex-basis: 480px;
+         flex-basis: ${SidebarWidth}px;
          flex-shrink: 0;
          flex-grow: 0;
          overflow-y: auto;
@@ -44,7 +46,7 @@ export const styles = {
         ${MediaStr.mobileAndTablet} {
             padding-top: 88px;
            
-            right: ${isOpen ? '0' : '-480px' };
+            right: ${isOpen ? '0' : '-' + SidebarWidth + 'px' };
          }          
          `,
     title: css`
@@ -83,5 +85,12 @@ export const styles = {
     margin: auto;
     padding-bottom: 100px;
     text-align: center;
+    display: flex;
+    `,
+    heartWrap: css`
+    display: block;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 2px;
     `,
 };

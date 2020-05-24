@@ -20,7 +20,8 @@ export const Pagination = (props: PaginationProps) => {
     const indexes = getIndexes(props.totalCount, props.currentIndex, maxPages);
 
     const onPrev = props.currentIndex > 0 ? () => props.onGoToPage(props.currentIndex - 1) : undefined;
-    const onNext = props.currentIndex < props.totalCount - 1 ? () => props.onGoToPage(props.currentIndex + 1) : undefined;
+    const onNext = props.currentIndex < props.totalCount - 1 ? () => props.onGoToPage(props.currentIndex + 1) :
+        undefined;
 
     return (
         <div css={props.style}>
@@ -44,7 +45,6 @@ const PageLink = (props: { children: string | number, isDisabled: boolean, onCli
         </button>
     </li>
 );
-
 
 const getIndexes = (pagesCount: number, currentIndex: number, maxPages: number) => {
     const indexes = [];
