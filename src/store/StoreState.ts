@@ -1,5 +1,4 @@
-import { Joke } from "../types/Joke";
-import { Pagination } from "../types/Pagination";
+import { Joke, Pagination } from "../types";
 
 const DefaultItemsPerPage = 50;
 

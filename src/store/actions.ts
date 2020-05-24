@@ -1,8 +1,8 @@
 import { Joke } from "../types";
 
-export const TOGGLE_FAVOURITE = 'Toggle fav',
-    SET_CATEGORIES = 'Set categories',
-    SET_JOKES = 'Set jokes',
+export const TOGGLE_FAVOURITE = 'Toggle_fav',
+    SET_CATEGORIES = 'Set_categories',
+    SET_JOKES = 'Set_jokes',
     SET_PAGE = 'Set_page';
 
 export type SetCategoriesAction = {

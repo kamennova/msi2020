@@ -39,7 +39,7 @@ const setJokesReducer = (state: StateShape, action: SetJokesAction): StateShape 
             ...state.pagination,
             currentIndex: 0,
             totalCount: Math.ceil(action.jokes.length / state.pagination.itemsPerPage),
-        }
+        },
     };
 };
 
