@@ -1,11 +1,11 @@
 import React from "react";
-import { HeartIcon } from "../icons/Heart";
+import { HeartIcon } from "../icons";
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 
-export const LikeButton = (props: {isFavourite: boolean, toggleIsFavourite: () => void}) => (
+export const LikeButton = (props: { isFavourite: boolean, toggleIsFavourite: () => void }) => (
     <button css={style} onClick={props.toggleIsFavourite}>
-        <HeartIcon isFilled={props.isFavourite} />
+        <HeartIcon isFilled={props.isFavourite}/>
     </button>
 );
 
@@ -17,8 +17,4 @@ const style = css`
     background-color: transparent;
 
     cursor: pointer;
-    
-    &:focus {
-    outline: none;
-    }
 `;

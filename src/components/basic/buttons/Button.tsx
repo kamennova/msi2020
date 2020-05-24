@@ -25,6 +25,7 @@ const styles = css`
     color: white;
     font-weight: bold;
     font-size: 16px;
+    line-height: 18px;
 
     background-color: ${Colors.Primary};
     background-image: linear-gradient(92.01deg, ${Colors.Primary} 0%, #7291FF 100%);
@@ -36,9 +37,5 @@ const styles = css`
     
     &:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    &:focus {
-    outline: none;
     }
 `;

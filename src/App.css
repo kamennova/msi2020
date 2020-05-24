@@ -21,3 +21,11 @@ body {
 #root {
     width: 100%
 }
+
+button:focus {
+    outline: none;
+}
+
+button::-moz-focus-inner, a::-moz-focus-inner {
+    border: 0;
+}
