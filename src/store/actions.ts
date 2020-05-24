@@ -1,4 +1,4 @@
-import { Joke } from "../types/Joke";
+import { Joke } from "../types";
 
 export const TOGGLE_FAVOURITE = 'Toggle fav',
     SET_CATEGORIES = 'Set categories',

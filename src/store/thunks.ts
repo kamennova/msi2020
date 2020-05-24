@@ -11,14 +11,9 @@ export const thunkSetCategories: ThunkResult = () => async (dispatch: Dispatch) 
     await getCategories()
         .then((categories) => dispatch(setCategories(categories)));
 
-export const thunkGetJokes: ThunkResult = (filter: FilterOptions) => async (dispatch: Dispatch, getState: () => StateShape) => {
-    const jokes = await getJokes(filter);
-    const state = getState();
-
-    return dispatch(setJokes(jokes.map(joke => ({
-        ...joke, isFavourite: state.favourites.some(item => item.id === joke.id)
-    }))))
-};
+export const thunkGetJokes: ThunkResult = (filter: FilterOptions) => async (dispatch: Dispatch) =>
+    await getJokes(filter)
+        .then((jokes) => dispatch(setJokes(jokes)));
 
 const getJokes = async (filter: FilterOptions): Promise<Joke[]> => {
     switch (filter.type) {
