@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { toggleIsFavourite } from "../../store/actions";
 import { StateShape } from "../../store/StoreState";
 import { thunkGetJokes, thunkSetCategories } from "../../store/thunks";
+import { VisuallyHiddenStyle } from "../../Style";
 import { Filter, FilterOptions, Joke, Pagination } from "../../types";
 import { OpacityLayer } from "../basic/Layer";
 import { SiteContainer } from "../basic/SiteContainer";
@@ -30,11 +31,9 @@ type HomeProps = {
 const DefaultCategory = 'celebrity';
 
 const HomeComponent = (props: HomeProps) => {
-    const initCategory = props.categories.length > 0 ? props.categories[0] : DefaultCategory;
-
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeFilter, setActiveFilter] = useState<Filter>(Filter.Random);
-    const [category, setCategory] = useState<string>(initCategory);
+    const [category, setCategory] = useState<string>(DefaultCategory);
     const [query, setQuery] = useState<string>('');
 
     const onToggleSidebarOpen = () => setIsSidebarOpen(!isSidebarOpen);
@@ -52,6 +51,7 @@ const HomeComponent = (props: HomeProps) => {
         <SiteContainer isBlocked={isSidebarOpen}>
             <div css={styles.mainColWrap}>
                 <Header/>
+                <h1 css={VisuallyHiddenStyle}>Chuck Norris jokes | Search and save </h1>
                 <div>
                     <MainTitle>Hey!</MainTitle>
                     <p css={styles.introText}>Let's try to find a joke for you:</p>

@@ -4,10 +4,12 @@ import { Logo } from "./basic/Logo";
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import { VisuallyHidden } from "./basic/VisuallyHidden";
 
 export const Header = () => (
     <header css={styles.header}>
         <a href="/" css={styles.logo}>
+            <VisuallyHidden>MSI 2020</VisuallyHidden>
             <Logo/>
         </a>
     </header>

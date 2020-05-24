@@ -1,3 +1,5 @@
+import { css } from '@emotion/core'
+
 export const media = {
     mobile: 320,
     tablet: 480,
@@ -24,3 +26,21 @@ export const Colors = {
     Primary: '#8EA7FF',
     Red: '#FF6767',
 };
+
+export const VisuallyHiddenStyle = css`
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+
+    -webkit-clip-path: inset(100%);
+
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+`;
