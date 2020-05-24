@@ -2,8 +2,7 @@ import { css } from '@emotion/core'
 import { MediaStr, sidePadding } from "../../Style";
 
 export const styles = {
-    mainColWrap:
-        css`
+    mainColWrap: css`
         flex-grow: 1; 
         padding-left: ${sidePadding.desktop}px;
         padding-right: ${sidePadding.desktop}px;

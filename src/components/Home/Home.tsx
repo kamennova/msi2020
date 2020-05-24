@@ -32,12 +32,12 @@ const DefaultCategory = 'celebrity';
 const HomeComponent = (props: HomeProps) => {
     const initCategory = props.categories.length > 0 ? props.categories[0] : DefaultCategory;
 
-    const [isFavOpen, setIsFavOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeFilter, setActiveFilter] = useState<Filter>(Filter.Random);
     const [category, setCategory] = useState<string>(initCategory);
     const [query, setQuery] = useState<string>('');
 
-    const onToggleFav = () => setIsFavOpen(!isFavOpen);
+    const onToggleSidebarOpen = () => setIsSidebarOpen(!isSidebarOpen);
 
     const loadData = async () => {
         await props.setCategories();
@@ -49,7 +49,7 @@ const HomeComponent = (props: HomeProps) => {
     }, []);
 
     return (
-        <SiteContainer>
+        <SiteContainer isBlocked={isSidebarOpen}>
             <div css={styles.mainColWrap}>
                 <Header/>
                 <div>
@@ -64,9 +64,9 @@ const HomeComponent = (props: HomeProps) => {
                 </div>
             </div>
 
-            <OpacityLayer isVisible={isFavOpen} onClick={onToggleFav}/>
-            <FavouritesToggle isOpen={isFavOpen} onToggle={onToggleFav}/>
-            <Favourites isOpen={isFavOpen} jokes={props.favourites} onToggleFav={props.onToggleFav}/>
+            <FavouritesToggle isOpen={isSidebarOpen} onToggle={onToggleSidebarOpen}/>
+            <OpacityLayer isVisible={isSidebarOpen} onClick={onToggleSidebarOpen}/>
+            <Favourites isOpen={isSidebarOpen} jokes={props.favourites} onToggleFav={props.onToggleFav} />
         </SiteContainer>
     );
 };

@@ -13,7 +13,7 @@ export const styles = {
          flex-direction: column;
          width: 480px;
          max-width: 100%;
-         height: ${window.innerHeight}px;
+         height: 100%;
          flex-basis: 480px;
          flex-shrink: 0;
          flex-grow: 0;
@@ -84,6 +84,5 @@ export const styles = {
     margin: auto;
     padding-bottom: 100px;
     text-align: center;
-    `
+    `,
 };
-

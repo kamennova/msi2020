@@ -2,18 +2,26 @@ import React from 'react';
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import { useWindowHeight } from "../../hooks";
 
-export const SiteContainer = (props: { children?: JSX.Element | (JSX.Element | undefined)[] }) => (
-    <div css={style}>{props.children}</div>
-);
+type ContainerProps = {
+    children?: JSX.Element | (JSX.Element | undefined)[],
+    isBlocked?: boolean, // blocks scrolling, e.g. when modal is open
+}
 
-const style = css`
+export const SiteContainer = (props: ContainerProps) => {
+    const height = useWindowHeight();
+
+    return (
+        <div css={style(height, props.isBlocked)}>{props.children}</div>
+    );
+};
+
+const style = (height: number, isBlocked?: boolean) => css`
     position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
+    max-height: ${isBlocked ? height + 'px' : 'auto'};
+    min-height: ${height}px;
+    overflow: ${isBlocked ? 'hidden' : 'auto'};
     width: 100%;
-    flex-grow: 1;
     margin: 0 auto;
 `;
